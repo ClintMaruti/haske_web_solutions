@@ -12,24 +12,23 @@ export function Hero() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Building
+            Transforming Ideas into
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}exceptional websites{" "}
+              {" "}Digital Excellence{" "}
             </span>
-            for your success
           </h1>
           <p className="mt-6 text-xl text-foreground/60">
-            Hi, I'm Clint Abraham - a web developer focused on creating robust and user-friendly websites that help businesses thrive in the digital world.
+            Haske Solutions is your trusted partner in creating powerful, scalable, and user-friendly web applications that drive business growth and innovation.
           </p>
           <div className="mt-8 flex gap-4">
             <Button asChild size="lg">
               <a href="#projects">
-                View My Work
+                View Our Work
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="#contact">Get in Touch</a>
+              <a href="#contact">Start Your Project</a>
             </Button>
           </div>
         </motion.div>
@@ -41,8 +40,8 @@ export function Hero() {
           className="relative"
         >
           <img
-            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf"
-            alt="Clint Abraham"
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+            alt="Web Development"
             className="rounded-2xl shadow-2xl"
           />
         </motion.div>
