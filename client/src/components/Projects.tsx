@@ -1,44 +1,37 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 export function Projects() {
   const projects = [
     {
       title: "E-commerce Platform",
-      description: "A full-featured online store with payment integration",
+      description: "A full-featured online store with seamless payment integration and inventory management system.",
       image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960",
-      tags: ["React", "Node.js", "MongoDB"],
     },
     {
       title: "Portfolio Website",
-      description: "Modern portfolio website with animations",
+      description: "Modern portfolio website with stunning animations and responsive design.",
       image: "https://images.unsplash.com/photo-1710855492709-aa06902e181c",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
     },
     {
       title: "Business Dashboard",
-      description: "Analytics dashboard for business metrics",
+      description: "Comprehensive analytics dashboard for tracking and visualizing business metrics.",
       image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-      tags: ["Vue.js", "D3.js", "Express"],
     },
     {
       title: "Real Estate Platform",
-      description: "Property listing and management system",
+      description: "Advanced property listing and management system with virtual tour capabilities.",
       image: "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8",
-      tags: ["React", "Django", "PostgreSQL"],
     },
     {
       title: "Social Media App",
-      description: "Social networking platform with real-time features",
+      description: "Feature-rich social networking platform with real-time updates and interactive features.",
       image: "https://images.unsplash.com/photo-1716788781066-7dbce308bbe0",
-      tags: ["React Native", "Firebase", "WebSocket"],
     },
     {
       title: "Educational Platform",
-      description: "Online learning management system",
+      description: "Comprehensive learning management system with interactive course content and progress tracking.",
       image: "https://images.unsplash.com/photo-1510759395231-72b17d622279",
-      tags: ["Angular", "Node.js", "MySQL"],
     },
   ];
 
@@ -52,9 +45,9 @@ export function Projects() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold">My Projects</h2>
+          <h2 className="text-3xl font-bold">Our Projects</h2>
           <p className="mt-4 text-lg text-foreground/60 max-w-2xl mx-auto">
-            Here are some of the projects I've worked on. Each project represents unique challenges and solutions.
+            Here's a showcase of our successful projects. Each project represents our commitment to excellence and innovation.
           </p>
         </motion.div>
 
@@ -75,14 +68,7 @@ export function Projects() {
                 />
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-foreground/60 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
+                  <p className="text-foreground/60">{project.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
