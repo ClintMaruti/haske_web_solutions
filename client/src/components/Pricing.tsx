@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
@@ -7,7 +12,7 @@ export function Pricing() {
   const tiers = [
     {
       name: "Basic",
-      price: "29,999",
+      price: "44,999",
       description: "Perfect for small businesses",
       features: [
         "Responsive Website Design",
@@ -19,7 +24,7 @@ export function Pricing() {
     },
     {
       name: "Professional",
-      price: "59,999",
+      price: "99,999",
       description: "Great for growing businesses",
       features: [
         "Everything in Basic",
@@ -34,7 +39,7 @@ export function Pricing() {
     },
     {
       name: "Enterprise",
-      price: "119,999",
+      price: "179,999",
       description: "For large organizations",
       features: [
         "Everything in Professional",
@@ -60,7 +65,8 @@ export function Pricing() {
         >
           <h2 className="text-3xl font-bold">Pricing Plans</h2>
           <p className="mt-4 text-lg text-foreground/60 max-w-2xl mx-auto">
-            Choose the perfect plan for your needs. All prices are in KES and include ongoing support.
+            Choose the perfect plan for your needs. All prices are in KES and
+            include ongoing support.
           </p>
         </motion.div>
 
@@ -73,7 +79,11 @@ export function Pricing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className={`h-full ${tier.highlighted ? "border-primary shadow-lg" : ""}`}>
+              <Card
+                className={`h-full ${
+                  tier.highlighted ? "border-primary shadow-lg" : ""
+                }`}
+              >
                 <CardHeader>
                   <h3 className="text-2xl font-bold">{tier.name}</h3>
                   <div className="mt-4">
@@ -92,7 +102,10 @@ export function Pricing() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full" variant={tier.highlighted ? "default" : "outline"}>
+                  <Button
+                    className="w-full"
+                    variant={tier.highlighted ? "default" : "outline"}
+                  >
                     Get Started
                   </Button>
                 </CardFooter>

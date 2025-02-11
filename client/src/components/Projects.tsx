@@ -1,39 +1,83 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
-export function Projects() {
-  const projects = [
-    {
-      title: "E-commerce Platform",
-      description: "A full-featured online store with seamless payment integration and inventory management system.",
-      image: "https://images.unsplash.com/photo-1609921212029-bb5a28e60960",
-    },
-    {
-      title: "Portfolio Website",
-      description: "Modern portfolio website with stunning animations and responsive design.",
-      image: "https://images.unsplash.com/photo-1710855492709-aa06902e181c",
-    },
-    {
-      title: "Business Dashboard",
-      description: "Comprehensive analytics dashboard for tracking and visualizing business metrics.",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
-    },
-    {
-      title: "Real Estate Platform",
-      description: "Advanced property listing and management system with virtual tour capabilities.",
-      image: "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8",
-    },
-    {
-      title: "Social Media App",
-      description: "Feature-rich social networking platform with real-time updates and interactive features.",
-      image: "https://images.unsplash.com/photo-1716788781066-7dbce308bbe0",
-    },
-    {
-      title: "Educational Platform",
-      description: "Comprehensive learning management system with interactive course content and progress tracking.",
-      image: "https://images.unsplash.com/photo-1510759395231-72b17d622279",
-    },
-  ];
+import ecom1 from "@/assets/ecommerce/ecomerce.jpg";
+
+import hr1 from "@/assets/hr/hr.jpg";
+
+import dash1 from "@/assets/dashboard/dash1.jpg";
+
+import real1 from "@/assets/realestate/real1.jpg";
+
+import edu1 from "@/assets/education/edu1.jpg";
+
+import asse1 from "@/assets/asset_mgt/asset1.jpg";
+
+const projects = [
+  {
+    title: "E-commerce Platform",
+    description:
+      "A full-featured online store with seamless payment integration and inventory management system.",
+    image: ecom1,
+  },
+  {
+    title: "HR Platform and Payroll",
+    description:
+      "A robust HR and payroll management system designed to streamline employee records, automate payroll processing, manage benefits, and ensure compliance with labor laws.",
+    image: hr1,
+  },
+  {
+    title: "Business Dashboard",
+    description:
+      "Comprehensive analytics dashboard for tracking and visualizing business metrics.",
+    image: dash1,
+  },
+  {
+    title: "Real Estate Platform",
+    description:
+      "Advanced property listing and management system with virtual tour capabilities.",
+    image: real1,
+  },
+  {
+    title: "Educational Platform",
+    description:
+      "Comprehensive learning management system with interactive course content and progress tracking.",
+    image: edu1,
+  },
+  {
+    title: "Asset Management System",
+    description:
+      "A powerful asset management solution that helps organizations track, maintain, and optimize the lifecycle of physical and digital assets with real-time monitoring and reporting.",
+    image: asse1,
+  },
+];
+
+export const Projects = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const handleNext = () => {
+    setSelectedIndex((prevIndex) =>
+      prevIndex === null ? 0 : (prevIndex + 1) % projects.length
+    );
+  };
+
+  const handlePrev = () => {
+    setSelectedIndex((prevIndex) =>
+      prevIndex === null
+        ? projects.length - 1
+        : (prevIndex - 1 + projects.length) % projects.length
+    );
+  };
 
   return (
     <section id="projects" className="py-20 px-4">
@@ -47,7 +91,8 @@ export function Projects() {
         >
           <h2 className="text-3xl font-bold">Our Projects</h2>
           <p className="mt-4 text-lg text-foreground/60 max-w-2xl mx-auto">
-            Here's a showcase of our successful projects. Each project represents our commitment to excellence and innovation.
+            Here's a showcase of our successful projects. Each project
+            represents our commitment to excellence and innovation.
           </p>
         </motion.div>
 
@@ -60,14 +105,19 @@ export function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="overflow-hidden h-full">
+              <Card
+                className="overflow-hidden h-full cursor-pointer"
+                onClick={() => setSelectedIndex(index)}
+              >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover"
                 />
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
                   <p className="text-foreground/60">{project.description}</p>
                 </CardContent>
               </Card>
@@ -75,6 +125,38 @@ export function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedIndex !== null && (
+        <Dialog open onOpenChange={() => setSelectedIndex(null)}>
+          <DialogContent className="max-w-lg w-full mx-auto">
+            <DialogHeader>
+              <DialogTitle>{projects[selectedIndex].title}</DialogTitle>
+              {/* <DialogClose className="absolute top-2 right-2">
+                <X className="w-6 h-6" />
+              </DialogClose> */}
+            </DialogHeader>
+            <div className="relative">
+              <img
+                src={projects[selectedIndex].image}
+                alt={projects[selectedIndex].title}
+                className="w-full h-64 object-cover rounded-md"
+              />
+              <p className="mt-4 text-center text-foreground/80">
+                {projects[selectedIndex].description}
+              </p>
+              <div className="flex justify-between mt-4">
+                <Button variant="outline" onClick={handlePrev}>
+                  <ChevronLeft className="w-5 h-5" />
+                </Button>
+                <Button variant="outline" onClick={handleNext}>
+                  <ChevronRight className="w-5 h-5" />
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </section>
   );
-}
+};
